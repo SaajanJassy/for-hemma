@@ -7,7 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="proposal-section" class="container">
+    <div id="password-section" class="container">
+        <h1>Hemma, Please Enter the Password</h1>
+        <input type="password" id="password-input" placeholder="Enter password here...">
+        <button onclick="checkPassword()" id="login-btn">Enter</button>
+        <p id="password-error" class="hidden">Wrong password! Try again, Bubba. 😉</p>
+    </div>
+
+    <div id="proposal-section" class="container hidden">
         <h1>Dear Hemma, will you be my Valentine?</h1>
         <div class="btn-group">
             <button id="yes-btn" onclick="showMemories()">Yes</button>
@@ -16,17 +23,17 @@
     </div>
 
     <div id="memories-section" class="container hidden">
-        <h1>Yay! ❤️ I'm the luckiest!</h1>
+        <h1>Yayyyy! ❤️ Love you Hem x!</h1>
         <div class="gallery">
             <img src="photo1.jpg" class="memory-card">
             <img src="photo2.jpg" class="memory-card">
             <img src="photo3.jpg" class="memory-card">
             <img src="photo4.jpg" class="memory-card">
         </div>
-        <p class="footer-text">Can't wait for our next date! 🥰</p>
+        <p class="footer-text">Here's to making so many more memories together! 🥰</p>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
