@@ -2,11 +2,10 @@ const noBtn = document.getElementById('no-btn');
 const proposalSection = document.getElementById('proposal-section');
 const memoriesSection = document.getElementById('memories-section');
 
-// The "Moving Away" Logic
+// The "No-Escape" Logic
 noBtn.addEventListener('mouseover', () => {
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-    
     noBtn.style.left = `${x}px`;
     noBtn.style.top = `${y}px`;
 });
@@ -14,5 +13,11 @@ noBtn.addEventListener('mouseover', () => {
 function showMemories() {
     proposalSection.classList.add('hidden');
     memoriesSection.classList.remove('hidden');
-    // Optional: Add confetti logic here!
+
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff4d6d', '#ffffff', '#ffb3c1']
+    });
 }
