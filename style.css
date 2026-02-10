@@ -1,57 +1,56 @@
 body {
-    background-color: #fff0f3; /* Light Valentine Pink */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #c9184a; /* Deep Red/Pink */
+    background-color: #fff0f3;
+    font-family: 'Arial', sans-serif;
+    color: #c9184a;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    overflow-x: hidden;
 }
 
-.container {
-    text-align: center;
-    padding: 20px;
-}
-
+.container { text-align: center; padding: 20px; }
 .hidden { display: none; }
-
-h1 { font-size: 2.5rem; margin-bottom: 2rem; }
+h1 { font-size: 2.5rem; margin-bottom: 2rem; text-shadow: 2px 2px white; }
 
 button {
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    padding: 15px 40px;
+    font-size: 1.5rem;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    transition: transform 0.2s;
     margin: 10px;
 }
 
 #yes-btn {
     background-color: #ff4d6d;
     color: white;
-    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
 }
 
 #no-btn {
     background-color: #ffb3c1;
     color: #c9184a;
-    position: absolute; /* Needed for the movement logic */
+    position: absolute;
+    transition: all 0.2s ease;
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-    max-width: 1000px;
-    margin-top: 30px;
+    max-width: 900px;
 }
 
 .memory-card {
-    width: 100%;
-    border-radius: 15px;
-    border: 5px solid white;
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    border: 10px solid white;
+    border-bottom: 40px solid white;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: rotate(-2deg);
 }
+
+.memory-card:nth-child(even) { transform: rotate(3deg); }
