@@ -1,42 +1,47 @@
-// Password Logic
-function checkPassword() {
-    const input = document.getElementById('password-input').value;
+document.addEventListener('DOMContentLoaded', () => {
+    const loginBtn = document.getElementById('login-btn');
+    const passwordInput = document.getElementById('password-input');
     const errorMsg = document.getElementById('password-error');
     const passwordSection = document.getElementById('password-section');
     const proposalSection = document.getElementById('proposal-section');
 
-    if (input.toLowerCase() === "bubba") {
-        passwordSection.classList.add('hidden');
-        proposalSection.classList.remove('hidden');
-    } else {
-        errorMsg.classList.remove('hidden');
+    function verify() {
+        if (passwordInput.value.toLowerCase() === "bubba") {
+            passwordSection.classList.add('hidden');
+            proposalSection.classList.remove('hidden');
+        } else {
+            errorMsg.classList.remove('hidden');
+        }
     }
-}
 
-// Moving Button Logic
-const noBtn = document.getElementById('no-btn');
-noBtn.addEventListener('mouseover', () => {
-    // Calculate random position within the viewport padding
-    const padding = 100;
-    const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-    const maxY = window.innerHeight - noBtn.offsetHeight - padding;
-    
-    const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-    const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
-    
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
+    // Click handler
+    loginBtn.addEventListener('click', verify);
+
+    // Keyboard "Enter" handler
+    passwordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') verify();
+    });
+
+    // Moving Button Logic
+    const noBtn = document.getElementById('no-btn');
+    noBtn.addEventListener('mouseover', () => {
+        const padding = 100;
+        const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+        const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+        
+        const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+        const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+        
+        noBtn.style.left = randomX + 'px';
+        noBtn.style.top = randomY + 'px';
+    });
 });
 
-// Final Success Logic
+// Keep this outside the DOMContentLoaded so the 'Yes' button can see it
 function showMemories() {
-    const proposalSection = document.getElementById('proposal-section');
-    const memoriesSection = document.getElementById('memories-section');
+    document.getElementById('proposal-section').classList.add('hidden');
+    document.getElementById('memories-section').classList.remove('hidden');
 
-    proposalSection.classList.add('hidden');
-    memoriesSection.classList.remove('hidden');
-
-    // Confetti Burst
     confetti({
         particleCount: 150,
         spread: 70,
