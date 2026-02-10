@@ -14,6 +14,32 @@ body {
 .hidden { display: none !important; }
 h1 { font-size: 2.5rem; margin-bottom: 2rem; text-shadow: 2px 2px white; }
 
+/* Add this at the top of your CSS for the Stats section */
+.stats-container {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px dashed #ff4d6d;
+}
+
+.stats-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #c9184a;
+}
+
+/* Update your #no-btn to include this specific transition */
+#no-btn {
+    background-color: #ffb3c1;
+    color: #c9184a;
+    position: absolute;
+    /* This cubic-bezier gives it a smooth, playful glide */
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 999;
+}
+
 input {
     padding: 12px 20px;
     font-size: 1.1rem;
@@ -37,15 +63,6 @@ button {
     background-color: #ff4d6d;
     color: white;
     box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-}
-
-#no-btn {
-    background-color: #ffb3c1;
-    color: #c9184a;
-    position: absolute;
-    /* This makes the movement smooth */
-    transition: all 0.4s ease-out; 
-    z-index: 999;
 }
 
 .gallery {
