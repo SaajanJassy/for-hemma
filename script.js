@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. PASSWORD & SECTION LOGIC
+    // 1. PASSWORD GATE
     const loginBtn = document.getElementById('login-btn');
     const passwordInput = document.getElementById('password-input');
     const errorMsg = document.getElementById('password-error');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (passwordInput.value.toLowerCase().trim() === "bubba") {
             passwordSection.classList.add('hidden');
             proposalSection.classList.remove('hidden');
-            window.scrollTo(0, 0); // Reset scroll for Hemma
+            window.scrollTo(0, 0); 
         } else {
             errorMsg.classList.remove('hidden');
         }
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. SMOOTH GLIDING "NO" BUTTON
+    // 2. "NO" BUTTON GLIDE
     const noBtn = document.getElementById('no-btn');
     let isMoving = false;
 
@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             isMoving = true;
 
             const padding = 100;
-            // Use clientWidth/Height to keep it inside the visible window
             const maxX = window.innerWidth - noBtn.offsetWidth - padding;
             const maxY = window.innerHeight - noBtn.offsetHeight - padding;
             
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 3. SHOW MEMORIES (YES BUTTON)
+// 3. SHOW MEMORIES
 function showMemories() {
     document.getElementById('proposal-section').classList.add('hidden');
     document.getElementById('memories-section').classList.remove('hidden');
@@ -62,9 +61,8 @@ function showMemories() {
     });
 }
 
-// 4. LIGHTBOX LOGIC
+// 4. LIGHTBOX
 let currentIndex = 0;
-// We fetch the images list ONLY when needed to ensure they are found
 function getImages() { return document.querySelectorAll('.memory-card'); }
 
 function openLightbox(index) {
