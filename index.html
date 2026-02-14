@@ -8,11 +8,11 @@
 </head>
 <body>
     <div id="password-section" class="container">
-    <h1>Hemma, Please Enter the Password</h1>
-    <input type="password" id="password-input" placeholder="Enter password here...">
-    <button id="login-btn">Enter</button> 
-    <p id="password-error" class="hidden">Wrong password! Try again, Bubba. 😉</p>
-</div>
+        <h1>Hemma, Please Enter the Password</h1>
+        <input type="password" id="password-input" placeholder="Enter password here...">
+        <button id="login-btn">Enter</button> 
+        <p id="password-error" class="hidden">Wrong password! Try again, Bubba. 😉</p>
+    </div>
 
     <div id="proposal-section" class="container hidden">
         <h1>Dear Hemma, will you be my Valentine?</h1>
@@ -24,16 +24,51 @@
 
     <div id="memories-section" class="container hidden">
         <h1>Yayyyy! ❤️ Love you Hem x!</h1>
+        
         <div class="gallery">
-            <img src="photo1.jpg" class="memory-card">
-            <img src="photo2.jpg" class="memory-card">
-            <img src="photo3.jpg" class="memory-card">
-            <img src="photo4.jpg" class="memory-card">
+            <img src="106_2586.jpeg" class="memory-card" onclick="openLightbox(0)">
+            <img src="106_2646.jpeg" class="memory-card" onclick="openLightbox(1)">
+            <img src="106_2804.jpeg" class="memory-card" onclick="openLightbox(2)">
+            <img src="106_2873.jpeg" class="memory-card" onclick="openLightbox(3)">
+            <img src="106_2880.jpeg" class="memory-card" onclick="openLightbox(4)">
+            <img src="106_2883.jpeg" class="memory-card" onclick="openLightbox(5)">
+            <img src="106_2903.jpeg" class="memory-card" onclick="openLightbox(6)">
+            <img src="106_2905.jpeg" class="memory-card" onclick="openLightbox(7)">
+            <img src="106_3503.jpeg" class="memory-card" onclick="openLightbox(8)">
+            <img src="106_3571.jpeg" class="memory-card" onclick="openLightbox(9)">
+            <img src="IMG_0158.jpeg" class="memory-card" onclick="openLightbox(10)">
+            <img src="IMG_0284.jpeg" class="memory-card" onclick="openLightbox(11)">
+            <img src="IMG_0448.jpeg" class="memory-card" onclick="openLightbox(12)">
+            <img src="IMG_0532.jpeg" class="memory-card" onclick="openLightbox(13)">
+            <img src="IMG_0693.jpeg" class="memory-card" onclick="openLightbox(14)">
+            <img src="IMG_1690.jpeg" class="memory-card" onclick="openLightbox(15)">
+            <img src="IMG_1731.jpeg" class="memory-card" onclick="openLightbox(16)">
+            <img src="IMG_1748.jpeg" class="memory-card" onclick="openLightbox(17)">
+            <img src="IMG_1751.jpeg" class="memory-card" onclick="openLightbox(18)">
+            <img src="IMG_1757.jpeg" class="memory-card" onclick="openLightbox(19)">
+            <img src="IMG_1815.jpeg" class="memory-card" onclick="openLightbox(20)">
+            <img src="IMG_1927.jpeg" class="memory-card" onclick="openLightbox(21)">
+            <img src="IMG_9273.jpeg" class="memory-card" onclick="openLightbox(22)">
+            <img src="IMG_9275.jpeg" class="memory-card" onclick="openLightbox(23)">
+            <img src="IMG_9292.jpeg" class="memory-card" onclick="openLightbox(24)">
+            <img src="IMG_9396.jpeg" class="memory-card" onclick="openLightbox(25)">
+            <img src="IMG_9590.jpeg" class="memory-card" onclick="openLightbox(26)">
+            <img src="IMG_9971.jpeg" class="memory-card" onclick="openLightbox(27)">
+            <img src="lp_image.jpeg" class="memory-card" onclick="openLightbox(28)">
+            <img src="65d2da36-7260-4c19-974a-887203ada013.jpeg" class="memory-card" onclick="openLightbox(29)">
         </div>
+
+        <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+            <span class="arrow left" onclick="changeImage(-1, event)">&#10094;</span>
+            <div class="lightbox-content">
+                <img id="prev-img" class="side-img">
+                <img id="main-img" class="active-img">
+                <img id="next-img" class="side-img">
+            </div>
+            <span class="arrow right" onclick="changeImage(1, event)">&#10095;</span>
+        </div>
+
         <p class="footer-text">Here's to making so many more memories together! 🥰</p>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+    <script src
