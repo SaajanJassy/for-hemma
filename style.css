@@ -1,45 +1,36 @@
+/* 1. GLOBAL STYLES */
 body {
     background-color: #fff0f3;
     font-family: 'Arial', sans-serif;
     color: #c9184a;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Removed overflow:hidden and flex from here to allow gallery scrolling */
+}
+
+/* Base container for all sections */
+.container { 
+    text-align: center; 
+    padding: 40px 20px; 
+    width: 100%; 
+    box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
-    overflow: hidden; /* Prevents scrollbars when button moves */
 }
 
-.container { text-align: center; padding: 20px; width: 100%; }
 .hidden { display: none !important; }
-h1 { font-size: 2.5rem; margin-bottom: 2rem; text-shadow: 2px 2px white; }
 
-/* Add this at the top of your CSS for the Stats section */
-.stats-container {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 10px 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    display: inline-block;
-    border: 1px dashed #ff4d6d;
+h1 { 
+    font-size: 2.5rem; 
+    margin-bottom: 2rem; 
+    text-shadow: 2px 2px white; 
 }
 
-.stats-text {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #c9184a;
-}
-
-/* Update your #no-btn to include this specific transition */
-#no-btn {
-    background-color: #ffb3c1;
-    color: #c9184a;
-    position: absolute;
-    /* This cubic-bezier gives it a smooth, playful glide */
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 999;
-}
-
+/* 2. BUTTONS & INPUTS */
 input {
     padding: 12px 20px;
     font-size: 1.1rem;
@@ -47,6 +38,7 @@ input {
     border: 2px solid #ff4d6d;
     outline: none;
     margin-bottom: 10px;
+    width: 250px;
 }
 
 button {
@@ -56,7 +48,7 @@ button {
     border-radius: 50px;
     cursor: pointer;
     margin: 10px;
-    transition: transform 0.2s;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 #login-btn, #yes-btn {
@@ -65,30 +57,108 @@ button {
     box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
 }
 
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
+#login-btn:hover, #yes-btn:hover {
+    transform: scale(1.1);
+    background-color: #ff758f;
 }
 
-.memory-card {
-    width: 250px;
-    height: 300px;
-    object-fit: cover;
-    border: 10px solid white;
-    border-bottom: 40px solid white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+#no-btn {
+    background-color: #ffb3c1;
+    color: #c9184a;
+    position: absolute;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 999;
 }
 
 #password-error { color: #ff4d6d; font-weight: bold; margin-top: 10px; }
 
-#login-btn, #yes-btn {
-    transition: transform 0.3s ease; /* Makes the swell smooth */
+/* 3. GALLERY (Tesselated Grid) */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 300px;
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-#login-btn:hover, #yes-btn:hover {
-    transform: scale(1.1); /* Swells by 10% */
+.memory-card {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 8px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
+
+.memory-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(201, 24, 74, 0.3);
+    z-index: 5;
+}
+
+.footer-text {
+    margin: 50px 0;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* 4. LIGHTBOX */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.lightbox-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+    gap: 20px;
+}
+
+.active-img {
+    max-width: 60vw;
+    max-height: 80vh;
+    border: 5px solid white;
+    border-radius: 5px;
+}
+
+.side-img {
+    max-width: 15vw;
+    max-height: 40vh;
+    opacity: 0.2;
+    filter: blur(3px);
+    border-radius: 5px;
+    /* Hidden on small screens/mobile to keep it clean */
+}
+
+@media (max-width: 768px) {
+    .side-img { display: none; }
+    .active-img { max-width: 85vw; }
+}
+
+.arrow {
+    position: absolute;
+    color: white;
+    font-size: 60px;
+    cursor: pointer;
+    padding: 20px;
+    z-index: 10001;
+    transition: color 0.3s;
+}
+
+.arrow:hover { color: #ff4d6d; }
+.left { left: 2%; }
+.right { right: 2%; }
